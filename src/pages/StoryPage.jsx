@@ -4,6 +4,7 @@ import { db } from "../firebase";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import "./StoryPage.css";
 import moment from "moment";
+import logo from "../assets/logo.png";
 
 const StoryPage = () => {
   const { storyId } = useParams();
@@ -49,13 +50,8 @@ const StoryPage = () => {
 
   return (
     <div className="wedding-invitation">
-      <div style={{ display: "flex" }}>
-        <div
-          style={{
-            width: "50%",
-            marginRight: "20px",
-          }}
-        >
+      <div className="header-invitation-wrapper">
+        <div className="header-wrapper">
           <header className="header">
             <h2>{moment(storyData?.wedding?.date?.seconds).format("dddd")}</h2>
             <h1>
@@ -80,7 +76,7 @@ const StoryPage = () => {
             </p>
           </div>
         </div>
-        <div style={{ width: "50%" }}>
+        <div className="image-wrapper">
           <img
             width={"100%"}
             alt=""
@@ -90,19 +86,43 @@ const StoryPage = () => {
       </div>
 
       <div className="details">
-        <h3>17 Sat Aug</h3>
+        <h3>
+          {moment(storyData?.wedding?.date?.seconds).format("DD ddd MMM")}
+        </h3>
         <p>
           Wedding <br />
           10:00 am - 2:00 pm <br />
-          Kalleri Auditorium <br />
-          Muhoortham between 11:50 AM & 12:30 PM
+          {storyData?.wedding?.location} <br />
+          {storyData?.wedding?.notes}
         </p>
       </div>
 
       <div className="footer-note">
-        <p>You guys will be the perfect match, 🥰</p>
-        <span>— Shahenshah</span>
+        <div className="scrollable-container">
+          {storyData?.wishes?.map((card, index) => (
+            <div className="card" key={index}>
+              <h3>{card.name}</h3>
+              <p>{card.message}</p>
+            </div>
+          ))}
+        </div>
       </div>
+
+      <footer className="footer">
+        <div className="add-to-calendar-wrapper">
+          <span className="add-to-calendar">Add to calendar</span>
+        </div>
+        <div className="logo-wrapper">
+          <div className="footer-left">
+            <img src={logo} alt="Camrin Films Logo" className="footer-logo" />
+          </div>
+          <div className="footer-right">
+            <span className="powered-by">
+              Powered By <strong>PREMAGIC</strong>
+            </span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
