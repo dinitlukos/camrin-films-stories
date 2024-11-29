@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {db} from "../firebase"
+import { db } from "../firebase";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import "./StoryPage.css";
+import moment from "moment";
 
 const StoryPage = () => {
   const { storyId } = useParams();
@@ -12,17 +14,15 @@ const StoryPage = () => {
     const fetchStoryData = async () => {
       setLoading(true);
       try {
-        console.log(storyId)
-         const docSnap = await getDoc(doc(db,"stories",storyId))
-         if(docSnap.exists()){
-          console.log(docSnap.data())
+        console.log(storyId);
+        const docSnap = await getDoc(doc(db, "stories", storyId));
+        if (docSnap.exists()) {
+          console.log(docSnap.data());
 
-        setStoryData(docSnap.data());
-
-         }
-         else{
-          console.log("No stories found")
-         }
+          setStoryData(docSnap.data());
+        } else {
+          console.log("No stories found");
+        }
       } catch (error) {
         console.error("Error fetching story data:", error);
         setStoryData(null);
@@ -42,10 +42,67 @@ const StoryPage = () => {
     return <div>Story not found</div>;
   }
 
+  var duration = moment.duration(
+    moment().diff(storyData?.wedding?.date?.seconds)
+  );
+  var days = duration.asDays().toFixed(0);
+
   return (
-    <div>
-      <h1>{storyData.groom.name}</h1>
-      <p>{storyData.groom.father}</p>
+    <div className="wedding-invitation">
+      <div style={{ display: "flex" }}>
+        <div
+          style={{
+            width: "50%",
+            marginRight: "20px",
+          }}
+        >
+          <header className="header">
+            <h2>{moment(storyData?.wedding?.date?.seconds).format("dddd")}</h2>
+            <h1>
+              {moment(storyData?.wedding?.date?.seconds).format("DD MMMM yyyy")}
+            </h1>
+            <p>{moment(storyData?.wedding?.date?.seconds).format("hh:mm a")}</p>
+            <h3>{days} DAYS AGO</h3>
+          </header>
+
+          <div className="invitation-content">
+            <h3>{storyData?.groom?.name}</h3>
+            <p>
+              {`s/o Mr. ${storyData?.groom?.father} & Mrs. ${storyData?.groom?.mother}`}
+            </p>
+            <h3>&</h3>
+            <h3>{storyData?.bride?.name}</h3>
+            <p>
+              {`d/o Mr. ${storyData?.bride?.father} & Mrs. ${storyData?.bride?.mother}`}
+            </p>
+            <p className="guest-contact">
+              Guest contact: <b>{storyData?.guest_contact}</b>
+            </p>
+          </div>
+        </div>
+        <div style={{ width: "50%" }}>
+          <img
+            width={"100%"}
+            alt=""
+            src="https://images.premagic.com/DBX7QtIs9ptLEsrsOJ5qDa3o92w%3D%2Ffit-in%2F860x0%2Ffilters%3Aquality%2870%29%3Asharpen%28-0.2%29%3Astrip_icc%28%29%3Astrip_exif%28%29%2FmJIDv4VSj0Uu0qbE-7rj7utL55Ag-b%27WDk3UFZ3N2twSkotYWJlbnBuUkdfaDVpTnFVPS1maXQtaW4tMTI4MHgwLWZpbHRlcnMtcXVhbGl0eSg3MCktc2hhcnBlbigtMC4yKS1zdHJpcF9pY2MoKS1zdHJpcF9leGlmKCktbUpJRHY0VlNqMFV1MHFiRS1Vbks3RDc1MnoyZy1iJ1kyaGhibVJwYm1rdWFuQm4nLmpwZy53ZWJw%27.webp"
+          />
+        </div>
+      </div>
+
+      <div className="details">
+        <h3>17 Sat Aug</h3>
+        <p>
+          Wedding <br />
+          10:00 am - 2:00 pm <br />
+          Kalleri Auditorium <br />
+          Muhoortham between 11:50 AM & 12:30 PM
+        </p>
+      </div>
+
+      <div className="footer-note">
+        <p>You guys will be the perfect match, 🥰</p>
+        <span>— Shahenshah</span>
+      </div>
     </div>
   );
 };
