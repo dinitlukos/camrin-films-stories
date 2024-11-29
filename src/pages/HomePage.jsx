@@ -1,10 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./HomePage.css";
 
 const HomePage = () => {
   const stories = [
-    { id: 'huma-vuzd', title: 'Story of Huma Vuzd' },
-    { id: 'another-story', title: 'Another Story' },
+    { id: "huma-vuzd", title: "Story of Huma Vuzd" },
+    { id: "another-story", title: "Another Story" },
   ];
 
   return (
@@ -13,7 +14,12 @@ const HomePage = () => {
       <ul>
         {stories.map((story) => (
           <li key={story.id}>
-            <Link to={`/${story.id}`}>{story.title}</Link>
+            <div className="route-container">
+              <Link to={`/solo/${story.id}`}>{`${story.title} Greetings`}</Link>
+              <Link
+                to={`/collection/${story.id}`}
+              >{`${story.title} Collections`}</Link>
+            </div>
           </li>
         ))}
       </ul>
@@ -22,7 +28,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-
-
-

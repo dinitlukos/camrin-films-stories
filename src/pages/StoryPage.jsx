@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const StoryPage = () => {
   const { storyId } = useParams();
@@ -7,17 +7,24 @@ const StoryPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulating a fetch request to get story data
     const fetchStoryData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://api.premagic.com/view/savethedate/camrinfilms/${storyId}`,{headers:{ Accept: "application/json",
-            "Content-Type": "application/json",'Access-Control-Allow-Origin':'*'}});
+        const response = await fetch(
+          `https://api.premagic.com/view/savethedate/camrinfilms/${storyId}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        );
         const data = await response.json();
         setStoryData(data);
-        console.log("DATA",data)
+        console.log("DATA", data);
       } catch (error) {
-        console.error('Error fetching story data:', error);
+        console.error("Error fetching story data:", error);
         setStoryData(null);
       } finally {
         setLoading(false);

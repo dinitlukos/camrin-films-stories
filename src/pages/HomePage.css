@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Container for the homepage */
+.homepage {
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Heading styles */
+.homepage h1 {
+  color: #444;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* List styles */
+.homepage ul {
+  list-style: none;
+  padding: 0;
+}
+
+.homepage li {
+  margin: 1rem 0;
+}
+
+/* Link styles */
+.homepage a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.homepage a:hover {
+  color: #0056b3;
+}
+
+/* Add responsiveness */
+@media (max-width: 600px) {
+  .homepage h1 {
+    font-size: 2rem;
+  }
+
+  .homepage a {
+    font-size: 1rem;
+  }
+}
+
+.route-container {
+  display: grid;
+}
