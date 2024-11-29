@@ -1,0 +1,9 @@
+DATA="Something"
+FIREBASE_CONFIG={
+    apiKey: "AIzaSyBE0Lvb_MzDQmpZlA896ge6P64oDF_E3w8",
+    authDomain: "dh-wedding-reception.firebaseapp.com",
+    projectId: "dh-wedding-reception",
+    storageBucket: "dh-wedding-reception.firebasestorage.app",
+    messagingSenderId: "221663583843",
+    appId: "1:221663583843:web:ed3b217c3a3a342b206256"
+  }
