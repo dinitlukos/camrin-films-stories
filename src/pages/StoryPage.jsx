@@ -53,12 +53,22 @@ const StoryPage = () => {
       <div className="header-invitation-wrapper">
         <div className="header-wrapper">
           <header className="header">
-            <h2>{moment(storyData?.wedding?.date?.seconds).format("dddd")}</h2>
-            <h1>
-              {moment(storyData?.wedding?.date?.seconds).format("DD MMMM yyyy")}
-            </h1>
-            <p>{moment(storyData?.wedding?.date?.seconds).format("hh:mm a")}</p>
-            <h3>{days} DAYS AGO</h3>
+            <div className="header-left">
+            <div>{moment(storyData?.wedding?.date?.seconds).format("dddd")}</div>
+            <div>
+              {moment(storyData?.wedding?.date?.seconds).format("DD MMMM")}
+            </div>
+            <div>
+            {moment(storyData?.wedding?.date?.seconds).format("yyyy")}
+            </div>
+            <div className="wed-time">{moment(storyData?.wedding?.date?.seconds).format("hh:mm a")}</div>
+            </div>
+            <div className="divider"></div>
+            <div>
+            <div>{days} DAYS AGO</div>
+
+            </div>
+            
           </header>
 
           <div className="invitation-content">

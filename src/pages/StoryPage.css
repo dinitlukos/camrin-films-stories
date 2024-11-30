@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Montserrat;
   margin: 0;
   padding: 0;
   background-color: #dff0d8;
@@ -25,9 +25,13 @@ body {
 
 .header {
   background-color: #dff0d8;
+  display: flex;
+  justify-content: center;
   padding: 15px;
   border-radius: 15px;
   height: max-content;
+  text-transform:uppercase;
+  align-items: center;
 }
 
 .header h1 {
@@ -187,4 +191,16 @@ body {
 
 .powered-by strong {
   color: #ff6f61;
+}
+.divider {
+  background-color: #000000 ;
+  height: 70px;
+  width: 1px;
+  margin: 5px 20px;
+}
+.wed-time {
+  text-transform: lowercase;
+}
+.header-left {
+  text-align: end;
 }

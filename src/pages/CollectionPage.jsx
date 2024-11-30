@@ -10,19 +10,19 @@ const CollectionPage = () => {
     const fetchCollectionData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(
-          `https://api.premagic.com/view/savethedate/camrinfilms/${storyId}`,
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
-            },
-          }
-        );
-        const data = await response.json();
-        setCollectionData(data);
-        console.log("DATA", data);
+        // const response = await fetch(
+        //   `https://api.premagic.com/view/savethedate/camrinfilms/${storyId}`,
+        //   {
+        //     headers: {
+        //       Accept: "application/json",
+        //       "Content-Type": "application/json",
+        //       "Access-Control-Allow-Origin": "*",
+        //     },
+        //   }
+        // );
+        // const data = await response.json();
+        // setCollectionData(data);
+        // console.log("DATA", data);
       } catch (error) {
         console.error("Error fetching story data:", error);
         setCollectionData(null);
