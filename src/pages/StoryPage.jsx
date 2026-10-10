@@ -5,6 +5,7 @@ import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import "./StoryPage.css";
 import moment from "moment";
 import logo from "../assets/logo.png";
+import { Grid2 } from "@mui/material";
 
 const StoryPage = () => {
   const { storyId } = useParams();
@@ -50,50 +51,54 @@ const StoryPage = () => {
 
   return (
     <div className="wedding-invitation">
-      <div className="header-invitation-wrapper">
-        <div className="header-wrapper">
+        <Grid2 container>
+          <Grid2 item md={6}>
+            <div>
+            <div>{moment(storyData?.wedding?.date?.seconds).format("dddd")}</div>
+            <div>{moment(storyData?.wedding?.date?.seconds).format("DD MMMM")}</div>
+            <div>{moment(storyData?.wedding?.date?.seconds).format("yyyy")}</div>
+            <div className="wed-time">{moment(storyData?.wedding?.date?.seconds).format("hh:mm a")}</div>
+            <div>{days} DAYS AGO</div>
+            <div className="invitation-content">
+              <h3>{storyData?.groom?.name}</h3>
+              <p>
+                {`s/o Mr. ${storyData?.groom?.father} & Mrs. ${storyData?.groom?.mother}`}
+              </p>
+              <h3>&</h3>
+              <h3>{storyData?.bride?.name}</h3>
+              <p>
+                {`d/o Mr. ${storyData?.bride?.father} & Mrs. ${storyData?.bride?.mother}`}
+              </p>
+              <p className="guest-contact">
+                Guest contact: <b>{storyData?.guest_contact}</b>
+              </p>
+            </div>
+            </div>
+          </Grid2>
+          <Grid2 item md={6} >
+            <div className="image-wrapper">
+              <img
+                width={"100%"}
+                alt=""
+                src="https://images.premagic.com/DBX7QtIs9ptLEsrsOJ5qDa3o92w%3D%2Ffit-in%2F860x0%2Ffilters%3Aquality%2870%29%3Asharpen%28-0.2%29%3Astrip_icc%28%29%3Astrip_exif%28%29%2FmJIDv4VSj0Uu0qbE-7rj7utL55Ag-b%27WDk3UFZ3N2twSkotYWJlbnBuUkdfaDVpTnFVPS1maXQtaW4tMTI4MHgwLWZpbHRlcnMtcXVhbGl0eSg3MCktc2hhcnBlbigtMC4yKS1zdHJpcF9pY2MoKS1zdHJpcF9leGlmKCktbUpJRHY0VlNqMFV1MHFiRS1Vbks3RDc1MnoyZy1iJ1kyaGhibVJwYm1rdWFuQm4nLmpwZy53ZWJw%27.webp"
+              />
+            </div>
+          </Grid2>
+        </Grid2>
+        {/* <div className="header-wrapper">
           <header className="header">
             <div className="header-left">
-            <div>{moment(storyData?.wedding?.date?.seconds).format("dddd")}</div>
-            <div>
-              {moment(storyData?.wedding?.date?.seconds).format("DD MMMM")}
-            </div>
-            <div>
-            {moment(storyData?.wedding?.date?.seconds).format("yyyy")}
-            </div>
-            <div className="wed-time">{moment(storyData?.wedding?.date?.seconds).format("hh:mm a")}</div>
+            
             </div>
             <div className="divider"></div>
             <div>
-            <div>{days} DAYS AGO</div>
 
             </div>
             
           </header>
 
-          <div className="invitation-content">
-            <h3>{storyData?.groom?.name}</h3>
-            <p>
-              {`s/o Mr. ${storyData?.groom?.father} & Mrs. ${storyData?.groom?.mother}`}
-            </p>
-            <h3>&</h3>
-            <h3>{storyData?.bride?.name}</h3>
-            <p>
-              {`d/o Mr. ${storyData?.bride?.father} & Mrs. ${storyData?.bride?.mother}`}
-            </p>
-            <p className="guest-contact">
-              Guest contact: <b>{storyData?.guest_contact}</b>
-            </p>
-          </div>
-        </div>
-        <div className="image-wrapper">
-          <img
-            width={"100%"}
-            alt=""
-            src="https://images.premagic.com/DBX7QtIs9ptLEsrsOJ5qDa3o92w%3D%2Ffit-in%2F860x0%2Ffilters%3Aquality%2870%29%3Asharpen%28-0.2%29%3Astrip_icc%28%29%3Astrip_exif%28%29%2FmJIDv4VSj0Uu0qbE-7rj7utL55Ag-b%27WDk3UFZ3N2twSkotYWJlbnBuUkdfaDVpTnFVPS1maXQtaW4tMTI4MHgwLWZpbHRlcnMtcXVhbGl0eSg3MCktc2hhcnBlbigtMC4yKS1zdHJpcF9pY2MoKS1zdHJpcF9leGlmKCktbUpJRHY0VlNqMFV1MHFiRS1Vbks3RDc1MnoyZy1iJ1kyaGhibVJwYm1rdWFuQm4nLmpwZy53ZWJw%27.webp"
-          />
-        </div>
-      </div>
+          
+        </div> */}
 
       <div className="details">
         <h3>
@@ -126,11 +131,7 @@ const StoryPage = () => {
           <div className="footer-left">
             <img src={logo} alt="Camrin Films Logo" className="footer-logo" />
           </div>
-          <div className="footer-right">
-            <span className="powered-by">
-              Powered By <strong>PREMAGIC</strong>
-            </span>
-          </div>
+      
         </div>
       </footer>
     </div>

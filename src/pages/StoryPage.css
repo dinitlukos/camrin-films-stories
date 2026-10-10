@@ -14,18 +14,18 @@ body {
 }
 
 .header-wrapper {
-  width: 50%;
+  /* width: 50%; */
   padding: 20px;
 }
 
 .image-wrapper {
-  width: 50%;
+  /* width: 50%; */
   padding: 20px;
 }
 
 .header {
   background-color: #dff0d8;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   padding: 15px;
   border-radius: 15px;
@@ -110,8 +110,8 @@ body {
 }
 
 .card {
-  min-width: 300px;
-  max-width: 300px;
+  /* min-width: 300px; */
+  /* max-width: 300px; */
   height: 200px;
   background: linear-gradient(145deg, #fff, #f0f0f0);
   border: 1px solid #ddd;
@@ -203,4 +203,8 @@ body {
 }
 .header-left {
   text-align: end;
+}
+
+.gallery-item {
+  margin: 5px;
 }
